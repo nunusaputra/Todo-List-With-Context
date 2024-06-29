@@ -7,4 +7,13 @@
   font-family: "Nunito Sans", sans-serif;
   font-style: normal;
   text-decoration: none;
+  /* background-color: #F2F8FC; */
+}
+
+.background-style {
+  background-color: #F4F1F8;
+}
+
+.bg-color {
+  background-color: #222831;
 }
