@@ -72,4 +72,5 @@ const TodosContex = ({ children }) => {
   );
 };
 
+export const useTodos = () => useContext(TodosReducerContext);
 export default TodosContex;
