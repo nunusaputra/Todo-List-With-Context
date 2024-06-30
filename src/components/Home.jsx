@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useTodos } from "../context/TodosContex";
+import { DarkModeContext } from "../context/DarkMode";
 
 const Home = () => {
   const { todos, getTodos, deleteTodos } = useTodos();
+  // const {isDarkMode, setIsDarkMode} = useContext(DarkModeContext)
+  console.log(todos)
 
   useEffect(() => {
     getTodos();
@@ -15,11 +18,12 @@ const Home = () => {
   };
 
   return (
-    <div className="container">
+    <div className={`container`} >
       <h2 className="text-center mt-5 mb-5">Todo List With React Context</h2>
       <Link to="/add-todos">
         <button className="btn btn-primary mb-3">Add New Todos</button>
       </Link>
+      {/* <button onClick={() => setIsDarkMode(!isDarkMode)}>Dark</button> */}
       <Table striped bordered hover className="text-center">
         <thead>
           <tr>

@@ -7,13 +7,26 @@ const EditTodos = () => {
   const todoId = parseInt(id);
   const navigate = useNavigate();
   const { todos, getTodos, editTodos } = useTodos();
-  const existingTodo = todos.todos.find((item) => item.id === todoId);
-  const { title, isDone } = existingTodo;
-console.log(todos)
   const [input, setInput] = useState({
-    title: title,
-    isDone: isDone,
+    title: '',
+    isDone: false,
   });
+
+  useEffect(() => {
+    getTodos();
+  }, [getTodos]);
+
+  useEffect(() => {
+    if (todos && todos.todos) {
+      const existTodo = todos.todos.find((item) => item.id === todoId);
+      if (existTodo) {
+        setInput({
+          title: existTodo.title,
+          isDone: existTodo.isDone,
+        });
+      }
+    }
+  }, [todos, todoId]);
 
   const handleInput = (e) => {
     setInput({
@@ -43,9 +56,6 @@ console.log(todos)
     navigate("/");
   };
 
-  useEffect(() => {
-    getTodos();
-  }, []);
   return (
     <div className="d-flex w-100 vh-100 justify-content-center align-items-center background-style">
       <div className="w-50 border bg-color shadow-lg rounded text-white p-5">
